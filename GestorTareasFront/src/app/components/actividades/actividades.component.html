@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Actividades Enroladas</h2>
+  <div *ngIf="actividades.length > 0; else noActividades">
+    <div *ngFor="let actividad of actividades" class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ actividad.nombre_actividad }}</h5>
+        <p class="card-text">{{ actividad.descripcion }}</p>
+        <p class="card-text"><small class="text-muted">Creado el: {{ actividad.fecha_creacion | date }}</small></p>
+        <p class="card-text"><small class="text-muted">Finalización: {{ actividad.fecha_finalizacion | date }}</small></p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noActividades>
+    <p>No hay actividades en las que estés enrolado.</p>
+  </ng-template>
+</div>

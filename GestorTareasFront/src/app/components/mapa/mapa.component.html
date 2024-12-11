@@ -1,0 +1,58 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs">
+      <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+    </li>
+  </ol>
+</nav>
+<div class="container mx-auto p-6 border-white">
+  <div class="">
+    <div class="p-4 md:p-6">
+      <h1 class="text-xl md:text-4xl font-semibold mb-4 text-gray-900 dark:text-white">
+        Mapa del Sitio
+      </h1>
+      <ul>
+        <li class="mb-2 dark:text-white text-xl">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-600 dark:text-gray-400">&#9656;</span>
+            <a routerLink="" class="cursor-pointer hover:text-sky-300 text-white">Inicio</a>
+          </div>
+          <ul class="ml-6">
+            <li class="mb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-gray-600 dark:text-gray-400">&#9656;</span>
+                <a href="login" class="cursor-pointer hover:text-sky-300 text-white">Iniciar Sesión</a>
+              </div>
+            </li>
+            <li class="mb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-gray-600 dark:text-gray-400">&#9656;</span>
+                <a href="register" class="cursor-pointer hover:text-sky-300 text-white">Crear Cuenta</a>
+              </div>
+            </li>
+            <li class="mb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-gray-600 dark:text-gray-400">&#9656;</span>
+                <span class="text-white">Nosotros</span>
+              </div>
+              <ul class="ml-6">
+                <li class="mb-1">
+                  <div class="flex items-center space-x-2">
+                    <span class="text-gray-600 dark:text-gray-400">&#9656;</span>
+                    <a href="condiciones" class="cursor-pointer hover:text-sky-300 text-white">Términos y Condiciones</a>
+                  </div>
+                </li>    
+              </ul>
+            </li>
+            <li>
+              <div class="flex items-center space-x-2">
+                <span class="text-gray-600 dark:text-gray-400">&#9656;</span>
+                <a href="/proyectos" class="cursor-pointer hover:text-sky-300 text-white">Tus proyectos</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

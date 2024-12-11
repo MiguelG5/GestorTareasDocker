@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../../../assets/img/logo-removebg-preview (1).png"
+        alt="Logo de Gustoes"
+        style="width: 65px; height: auto"
+      />
+      TareaTech
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <ng-container *ngIf="user">
+          <a *ngIf="isAdmin()" class="nav-link" routerLink="/proyectos">Tus Proyecto</a>
+          <a *ngIf="isAdmin()" class="nav-link" routerLink="/cuenta">Colaboradores</a>
+          <a *ngIf="isCollaborator()" class="nav-link" routerLink="/actividades">actividades</a>
+          <a *ngIf="isMaster()" class="nav-link" routerLink="/dashboard">DASHBOARD</a>
+
+        </ng-container>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Aquí está el menú desplegable -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sobre nosotros
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" routerLink="/condiciones">Términos y Condiciones</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/mapa"
+                    >Mapa del sitio
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="search-container">
+      <app-search></app-search>
+    </div>
+
+    <ng-container *ngIf="!user; else userName">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/register">
+          <i class="bi bi-person-plus"></i> Crear Cuenta
+        </a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/login">
+          <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-template #userName>
+      <!-- Avatar -->
+      <div class="dropstart">
+        <button
+          type="button"
+          class="btn btn-secondary dropdown-toggle rounded-circle"
+          id="dropdownUserButton"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          [title]="user?.username ? user?.email : user?.username"
+        >
+          {{ user?.username | slice : 0 : 2 | uppercase }}
+        </button>
+        <ul
+          class="dropdown-menu dropdown-menu-dark"
+          aria-labelledby="dropdownUserButton"
+        >        
+          <li>
+            <button class="dropdown-item" (click)="logout()">
+              Cerrar Sesión
+            </button>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+</nav>

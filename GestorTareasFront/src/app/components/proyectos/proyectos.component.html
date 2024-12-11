@@ -1,0 +1,160 @@
+<div style="text-align: center;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs">
+        <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+<button type="button" class="btn bt1 btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Crear nuevo proyecto</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header mh">
+        <h1 class="modal-title hed fs-1" id="exampleModalLabel">Crea tu proyecto</h1>
+        <button type="button" class="btn-close bb" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(proyectoForm)"></button>
+      </div>
+      <div class="modal-body moda">
+        <div class="col-md-12">
+            <div class="cardd">
+                <div class="card-body">
+                    <form #proyectoForm="ngForm" (ngSubmit)="addProyecto(proyectoForm)">
+                        <input type="hidden" name="id" [(ngModel)]="proyectoService.selectedProyecto.id">
+                
+                        <div class="form-group">
+                            <input type="text" class="form-control cale" name="nombre_del_proyecto" placeholder="Nombre del proyecto" [(ngModel)]="proyectoService.selectedProyecto.nombre_del_proyecto">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control cale" name="descripcion" placeholder="Descripcion" [(ngModel)]="proyectoService.selectedProyecto.descripcion">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" class="form-control cale" name="fecha_finalizacion" placeholder="Fecha de finalizacion" [(ngModel)]="proyectoService.selectedProyecto.fecha_finalizacion">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(proyectoForm)">Close</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal">Crear</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    <div *ngFor="let proyecto of proyectosDelUsuario" class="col">
+        <div class="card custom-card mb-3">
+            <div class="card-header card-title">{{ proyecto.nombre_del_proyecto }}</div>
+            <div class="card-body">
+                <h5 class="card-title">Descripción</h5>
+                <p class="card-text">{{ proyecto.descripcion }}</p>
+                <h6 class="card-title">Fecha de creación</h6>
+                <p class="card-text">{{ proyecto.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}</p>
+                <h6 class="card-title">Fecha de finalización</h6>
+                <p class="card-text">{{ proyecto.fecha_finalizacion | date:'dd/MM/yyyy HH:mm' }}</p>
+                <br>
+                <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editProyecto(proyecto)">
+                    <i class="material-icons">edit</i> Editar
+                </button>
+                <button class="btn btn-danger btn-sm" (click)="deleteProyecto(proyecto.id)">
+                    <i class="material-icons">delete</i> Eliminar
+                </button>
+                <!-- Botón para crear tarea -->
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#actividadModal" (click)="prepareNewActivity(proyecto.id)">
+                    <i class="material-icons">book</i> Crear Tarea
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#veractividadModal" (click)="getActividadesByProyecto(proyecto.id)">
+                  <i class="material-icons">work</i> Ver Actividades
+                </button>
+                                                           
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="actividadModal" tabindex="-1" aria-labelledby="actividadModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header mh">
+          <h1 class="modal-title hed fs-1" id="actividadModalLabel">Crea tu actividad</h1>
+          <button type="button" class="btn-close bb" data-bs-dismiss="modal" aria-label="Close" (click)="resetForm(actividadForm)"></button>
+        </div>
+        <div class="modal-body moda">
+          <div class="col-md-12">
+            <div class="cardd">
+              <div class="card-body">
+                <!-- Formulario para crear actividad -->
+<form #actividadForm="ngForm" (ngSubmit)="addActividad(actividadForm)">
+  <input type="hidden" name="id" [(ngModel)]="actividadesService.selectedAtividad.id">
+  <input type="hidden" name="proyecto_id" [(ngModel)]="actividadesService.selectedAtividad.proyecto_id">
+
+  <div class="form-group">
+    <input type="text" class="form-control cale" name="nombre_actividad" placeholder="Nombre de la actividad" [(ngModel)]="actividadesService.selectedAtividad.nombre_actividad">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control cale" name="descripcion" placeholder="Descripcion" [(ngModel)]="actividadesService.selectedAtividad.descripcion">
+  </div>
+  <div class="form-group">
+    <input type="date" class="form-control cale" name="fecha_finalizacion" placeholder="Fecha de finalizacion" [(ngModel)]="actividadesService.selectedAtividad.fecha_finalizacion">
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="resetForm(actividadForm)">Cerrar</button>
+    <button class="btn btn-primary" data-bs-dismiss="modal">Crear</button>
+  </div>
+</form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal cre fade" id="veractividadModal" tabindex="-1" aria-labelledby="verActividadModalLabel" aria-hidden="true">
+    <div class="modal-dialog moda">
+      <div class="modal-content">
+        <div class="modal-header mhh">
+          <h1 class="modal-title hed fs-1" id="verActividadModalLabel">Actividades a realizar</h1>
+          <button type="button" class="btn-close bb" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body modaa">
+          <div class="col-md-12">
+            <div class="cardd">
+              <div class="card-body">
+                <!-- Tarjetas para mostrar actividades -->
+                <div class="card-list">
+                  <div *ngFor="let actividad of actividadesDelProyecto" class="custom-card">
+                    <!-- Verificar si la actividad pertenece al proyecto seleccionado -->
+                    <div *ngIf="actividad.proyecto_id === selectedProjectId">
+                      <div class="card-header card-title">{{ actividad.nombre_actividad }}</div>
+                      <div class="card-body">
+                        <h5 class="card-title">Descripción</h5>
+                        <p class="card-text">{{ actividad.descripcion }}</p>
+                        <h6 class="card-title">Fecha de creación</h6>
+                        <p class="card-text">{{ actividad.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}</p>
+                        <h6 class="card-title">Fecha de finalización</h6>
+                        <p class="card-text">{{ actividad.fecha_finalizacion | date:'dd/MM/yyyy HH:mm' }}</p>
+                        <br>
+
+                        <button (click)="suscribirse(actividad)" type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal"><i class="material-icons">manage_accounts</i>Gestionar colaboradores</button>
+
+                        <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#actividadModal" (click)="editActividad(actividad)">
+                          <i class="material-icons">edit</i> Editar
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteActividad(actividad.id)">
+                          <i class="material-icons">delete</i> Eliminar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        

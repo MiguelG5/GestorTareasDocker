@@ -1,0 +1,127 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="carde mb-3">
+        <div class="row g-0">
+          <div class="col-md-6">
+            <div class="card-body">
+              <h5 class="card-titlee mt-4">Unifica tus tareas, herramientas y logra tus objetivos</h5>
+              <p class="card-textt mt-4">En un mundo donde la productividad es clave, encontrar la manera de unificar todas nuestras tareas y herramientas se vuelve fundamental. Con una plataforma integrada, podemos simplificar nuestra vida diaria, desde la gestión de proyectos hasta el seguimiento de tareas pendientes. </p>
+              <button *ngIf="isNotLoggedIn()" routerLink="/register" type="submit" class="btn btn1 btn-custom">
+                REGISTRATE
+              </button>      
+            </div>
+          </div>
+          <div class="iman col-md-5">
+            <img src="../../../assets/img/5.png" class="img-fluid" alt="Imagen de ejemplo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="carousel-container row mt-4">
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item">
+        <img src="../../../assets/img/1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="carrusel-text">Haz que cada minuto cuente: organiza tu tiempo con eficacia.</p>
+        </div>
+      </div>
+      <div class="carousel-item active">
+        <img src="../../../assets/img/2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="carrusel-text">¡No dejes que el tiempo se escape! Usa nuestro sitio para planificar tu día.</p>
+          
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../assets/img/3.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="carrusel-text">La clave del éxito está en una buena gestión del tiempo. Empieza ahora.</p>
+          
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="../../../assets/img/4.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <p class="carrusel-text">¡Haz más en menos tiempo! Descubre cómo con nuestra herramienta de organización</p>
+          
+        </div>
+      </div>
+      <!-- Agrega más elementos carousel-item según sea necesario -->
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+</div>
+
+<div class="row containerv mt-4 menu-body">
+  <div class="row justify-content-center">
+    <div class="col center">
+      <div class="card mb-1 h-100"> <!-- Agrega la clase "custom-card" aquí -->
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img 
+              src="https://i.pinimg.com/564x/12/71/d2/1271d205e34b9d7a6163b855c6529bbe.jpg"
+              alt="Imagen de fondo" class="img-fluid rounded-start" />
+          </div>
+          <div class="col-md-9">
+            <div class="card-body py-2">
+              <h5 class="card-title mb-2">Un centro de productividad</h5>
+              <div class="contenedor3">
+                <p class="card-text mb-2">
+                  Sencillo, flexible y potente. Nuestra plataforma te ofrece todo lo que necesitas para organizarte y alcanzar tus objetivos de manera eficiente. Con nuestras listas y tarjetas, puedes visualizar claramente tus metas y las tareas pendientes, lo que te permite mantener un seguimiento detallado de tu progreso. </p>
+                  <p class="card-text mb-2">Ya sea que estés planificando un proyecto a largo plazo o gestionando las tareas diarias, nuestra plataforma te proporciona las herramientas necesarias para mantenerte organizado y productivo. Con un diseño intuitivo y funcionalidades potentes, puedes concentrarte en lo que realmente importa: lograr tus metas y completar tus tareas de manera eficiente y efectiva
+                  </p>
+                </div>
+                <button routerLink="/error" type="submit" class="btn btn-custom btn-sm">
+                  Conoce más
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+
+<!-- Tarjetas para mostrar paquetes -->
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-lg-13">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div *ngFor="let paquete of paqueteServices.paquetes" class="col mb-4">
+        <div class="card h-100">
+          <div class="card-header card-title">{{ paquete.nombre_paquete }}</div>
+          <div class="card-body">
+            <h5 class="card-title">Descripción</h5>
+            <p class="card-text">{{ paquete.descripcion }}</p>
+            <h6 class="card-title">Duración del paquete</h6>
+            <p class="card-text">{{ paquete.duracion }} días</p>
+            <h6 class="card-title">Costo MXN</h6>
+            <p class="card-text">{{ paquete.costo }}</p>
+            <h6 class="card-title">Número de Colaboradores</h6>
+            <p class="card-text">{{ paquete.numero_colaboradores }}</p>
+            <br>
+            <button *ngIf="isUser()" (click)="suscribirse(paquete)" type="button" class="btn btn-primary mt-3 btn-lg">Suscribirse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<br>

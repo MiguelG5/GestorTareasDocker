@@ -1,0 +1,192 @@
+###
+GET http://localhost:4000/api/actividades
+
+### 
+POST http://localhost:4000/api/usuario
+Content-Type: application/json
+
+{
+    "nombre": "Pedro",
+    "apellido": "Rojas",
+    "correo": "ppedro@example.com",
+    "contrasena": "clave123"
+}
+
+###
+GET http://localhost:3200/api/pedido
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEzNDgyODEwfQ.XUkaR0aytDYvu2QxtkPREueYt8DhvQkh04C-Swws1yE
+
+### 
+POST http://localhost:4000/api/pedido
+Content-Type: application/json
+
+  {
+    "alimentoconsumir": "Hamburguesa",
+    "cantidad": 2,
+    "precioalimento": "10.50",
+    "bebida": "Refresco",
+    "cantidadbebida": 2,
+    "preciobebida": "3.00",
+    "tipopago": "Tarjeta",
+    "propina": "1.50",
+    "numeromesa": 5,
+    "estatus": "En proceso",
+    "fechapedido": "2024-02-17T06:00:00.000Z",
+    "horapedido": "17:37:53.599318",
+    "total": "27.00"
+  }
+
+
+### 
+PUT http://localhost:4000/api/pedido/4
+Content-Type: application/json
+
+  {
+    "alimentoconsumir": "chilaquiles verdes ",
+    "cantidad": 2,
+    "precioalimento": "10.50",
+    "bebida": "Refresco",
+    "cantidadbebida": 2,
+    "preciobebida": "3.00",
+    "tipopago": "Tarjeta",
+    "propina": "1.50",
+    "numeromesa": 5,
+    "estatus": "En proceso",
+    "fechapedido": "2024-02-17T06:00:00.000Z",
+    "horapedido": "17:37:53.599318",
+    "total": "27.00"
+  }
+###
+DELETE http://localhost:4000/api/pedido/3
+
+###
+GET http://localhost:3200/api/employees 
+
+###
+POST http://localhost:4200/api/employees
+Content-Type: application/json
+
+{
+    "id": 3286,
+    "nombre_del_platillo": "Pan francés",
+    "descripcion_del_platillo": "Con jalea",
+    "precio": 35,
+    "categoria": "Desayuno"
+}
+
+###
+PUT http://localhost:4000/api/employees/20
+Content-Type: application/json
+
+{
+    "id": 10,
+    "nombre_del_platillo": "Pan francés",
+    "descripcion_del_platillo": "Con jalea",
+    "precio": 35,
+    "categoria": "Desayuno"
+}
+
+###
+DELETE http://localhost:4000/api/employees/20
+
+###
+GET http://localhost:4000/api/mesero
+
+###
+POST http://localhost:4000/api/mesero
+Content-Type: application/json
+
+{
+    "id": 6,
+    "nombre": "Pedro",
+    "email": "juan@example.com",
+    "edad": 25
+}
+
+###
+PUT http://localhost:4000/api/mesero/6
+Content-Type: application/json
+
+{
+    "nombre": "PEDRO",
+    "email": "juan@example.com",
+    "edad": 25
+}
+
+###
+DELETE  http://localhost:4000/api/mesero/6
+
+###
+GET http://localhost:4000/api/bebida
+
+###
+  POST http://localhost:3200/api/bebida
+Content-Type: application/json
+
+{
+    "id": 20,
+    "nombre_de_la_bebida": "Nombre del Platillo",
+    "descripcion_de_bebida": "Descripción del Platillo",
+    "precio": 10.99,
+    "categoria": "Categoria del Platillo"
+}
+
+###
+POST http://localhost:3200/api/reservacion
+Content-Type: application/json
+
+{
+        "fecha_reserva": "2024-05-10",
+        "numero_mesa": 5,
+        "numero_personas": 4,
+        "descripcion": "Aniversario",
+        "id_usuario": 1
+}
+
+###
+PUT http://localhost:3200/api/reservacion
+Content-Type: application/json
+
+{
+        "fecha_reserva": "2024-05-10",
+        "numero_mesa": 5,
+        "numero_personas": 4,
+        "descripcion": "Aniversario",
+      
+
+}
+
+###
+PUT http://localhost:4000/api/bebida/20
+Content-Type: application/json
+
+{
+    "nombre_de_la_bebida": "Pan francés",
+    "descripcion_de_bebida": "Con jalea",
+    "precio": 35,
+    "categoria": "Desayuno"
+}
+
+###
+DELETE  http://localhost:4000/api/bebida/20
+
+
+###
+POST  http://localhost:4000/api/user/register
+Content-Type: application/json
+
+{
+  "username": "marisol",
+  "email" : "marisol@gmail.com", 
+  "password": "12345",
+  "role":"admin"
+}
+
+###
+POST  http://localhost:4000/api/user/login
+Content-Type: application/json
+
+{
+  "email" : "marisol@gmail.com", 
+  "password": "12345"
+}

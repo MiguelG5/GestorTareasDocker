@@ -1,0 +1,82 @@
+.search__container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative; /* Establece el contexto de posicionamiento */
+  }
+  
+  .search_label {
+    position: relative;
+  }
+  
+  .search_input {
+    width: 100%;
+    padding: 10px 40px 10px 20px; /* Ajusta el espacio para el texto y el icono */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .search_label i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+  
+  ul.search_results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 100%; /* Posiciona la lista debajo del input */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none; /* Elimina el borde superior */
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1; /* Asegura que la lista esté por encima de otros elementos */
+  }
+  
+  ul.search_results li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  ul.search_results li:last-child {
+    border-bottom: none; /* Elimina el borde inferior del último elemento */
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  a:hover {
+    color: #007bff;
+  }
+  
+  .no-results {
+    display: none;
+    color: red;
+    margin-top: 10px;
+    font-style: italic;
+  }
+  
+  .no-results.show {
+    display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    .search_input {
+      padding-right: 30px; /* Reduce el espacio para el icono en pantallas más pequeñas */
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .search_input {
+      padding-right: 20px; /* Reduce aún más el espacio para el icono en pantallas muy pequeñas */
+    }
+  }

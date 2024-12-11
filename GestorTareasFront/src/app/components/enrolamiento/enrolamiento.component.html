@@ -1,0 +1,59 @@
+<div style="text-align: center;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs">
+        <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+<div class="row justify-content-center mt-5">
+  <div class="col-md-8">
+    <div *ngIf="actividad && proyectoId" class="card custom-card mb-4">
+      <div class="card-header card-title">
+        Nombre de la actividad: {{ actividad.nombre_actividad }}
+      </div>
+      <div class="card-body">
+        <h1 class="card-title">Descripción: </h1>
+        <p class="card-text">{{ actividad.descripcion }}</p>
+        <h1 class="card-title">Fecha de creación</h1>
+        <p class="card-text">{{ actividad.fecha_creacion | date:'dd/MM/yyyy HH:mm' }}</p>
+        <h1 class="card-title">Fecha de finalización: </h1>
+        <p class="card-text">{{ actividad.fecha_finalizacion | date:'dd/MM/yyyy' }}</p>
+        <!-- Mostrar los colaboradores enrolados -->
+        <div *ngIf="colaboradoresEnrolados.length > 0">
+          <h2>Colaboradores enrolados:</h2>
+          <ul>
+            <li *ngFor="let colaborador of colaboradoresEnrolados">
+              {{ colaborador.email }}
+              <button class="btn btn-danger btn-sm ms-2" (click)="eliminarColaborador(colaborador.id)">Eliminar</button>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="colaboradoresEnrolados.length === 0">
+          <p>No hay colaboradores enrolados para esta actividad.</p>
+        </div>
+        <!-- Mostrar los colaboradores disponibles para enrolarse -->
+        <div *ngIf="colaboradores.length > 0">
+          <h2>Colaboradores disponibles:</h2>
+          <ul>
+            <li *ngFor="let colaborador of colaboradores">
+              <label>
+                <input type="checkbox" [(ngModel)]="colaborador.selected" />
+                {{ colaborador.email }}
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div *ngIf="colaboradores.length === 0">
+          <p>No hay colaboradores disponibles, Paga un paquete para poder utilizar todas las funciones del sitio</p>
+        </div>
+
+        <!-- Botón para asignar actividad a los colaboradores -->
+        <button class="btn btn-primary float-end mt-3" (click)="asignarActividad()">
+          Asignar actividad a los colaboradores
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

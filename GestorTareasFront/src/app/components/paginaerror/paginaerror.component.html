@@ -1,0 +1,17 @@
+<div style="text-align: center;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs">
+          <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+<div class="error-container">
+    <img src="../../../assets/img/error-removebg-preview.png" alt="Error Image">
+    <h1>Lo sentimos</h1>
+    <p>El servicio que buscas aún no esta disponible</p>
+    <p >Vuelve a intentarlo más tarde.</p>
+  </div>
+  

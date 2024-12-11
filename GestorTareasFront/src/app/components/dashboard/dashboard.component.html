@@ -1,0 +1,173 @@
+<div style="text-align: center;">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs">
+          <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+<div class="container">
+    <h2>Users</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Razon Social</th>
+          <th>ID Colaborador</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.razon_social }}</td>
+          <td>{{ user.id_colaborador }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Pagos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Paquete ID</th>
+          <th>Fecha Inicio</th>
+          <th>Fecha Finalizacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pago of pagos">
+          <td>{{ pago.id }}</td>
+          <td>{{ pago.user_id }}</td>
+          <td>{{ pago.paquete_id }}</td>
+          <td>{{ pago.fecha_inicio }}</td>
+          <td>{{ pago.fecha_finalizacion }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Paquetes</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre Paquete</th>
+          <th>Descripción</th>
+          <th>Costo</th>
+          <th>Duración (días)</th>
+          <th>Número de Colaboradores</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paquete of paquetes">
+          <td>{{ paquete.id }}</td>
+          <td>{{ paquete.nombre_paquete }}</td>
+          <td>{{ paquete.descripcion }}</td>
+          <td>{{ paquete.costo }}</td>
+          <td>{{ paquete.duracion }}</td>
+          <td>{{ paquete.numero_colaboradores }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Colaboradores</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Usuario ID</th>
+          <th>Email</th>
+          <th>Contraseña</th>
+          <th>Pago ID</th>
+          <th>Seleccionado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let colaborador of colaboradores">
+          <td>{{ colaborador.id }}</td>
+          <td>{{ colaborador.usuario_id }}</td>
+          <td>{{ colaborador.email }}</td>
+          <td>{{ colaborador.contrasena }}</td>
+          <td>{{ colaborador.pago_id }}</td>
+          <td>{{ colaborador.selected ? 'Sí' : 'No' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Proyectos</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>User ID</th>
+          <th>Nombre del Proyecto</th>
+          <th>Descripción</th>
+          <th>Fecha Creación</th>
+          <th>Fecha Finalización</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let proyecto of proyectos">
+          <td>{{ proyecto.id }}</td>
+          <td>{{ proyecto.user_id }}</td>
+          <td>{{ proyecto.nombre_del_proyecto }}</td>
+          <td>{{ proyecto.descripcion }}</td>
+          <td>{{ proyecto.fecha_creacion | date }}</td>
+          <td>{{ proyecto.fecha_finalizacion | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Actividades</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Proyecto ID</th>
+          <th>Nombre de la actividad</th>
+          <th>Descripción</th>
+          <th>Fecha Creación</th>
+          <th>Fecha Finalización</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let actividades of actividades">
+          <td>{{ actividades.id }}</td>
+          <td>{{ actividades.proyecto_id }}</td>
+          <td>{{ actividades.nombre_actividad }}</td>
+          <td>{{ actividades.descripcion }}</td>
+          <td>{{ actividades.fecha_creacion | date }}</td>
+          <td>{{ actividades.fecha_finalizacion | date }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Actividad Colaborador</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Actividad ID</th>
+      <th>Colaborador ID</th>
+      <th>Fecha Asignación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let actividadColaborador of actividadColaboradores">
+      <td>{{ actividadColaborador.id }}</td>
+      <td>{{ actividadColaborador.actividad_id }}</td>
+      <td>{{ actividadColaborador.colaborador_id }}</td>
+      <td>{{ actividadColaborador.fecha_asignacion | date }}</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>

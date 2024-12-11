@@ -1,0 +1,410 @@
+
+.imgcontainer{
+    height: 1000px;
+    width: 400px;
+    display: block;
+  }
+
+ 
+.container {
+    display: flex; /* Utiliza flexbox */
+    justify-content: space-between; /* Distribuye el espacio entre las tarjetas */
+  }
+  
+  .card {
+    width: 5000px; /* Define el ancho deseado para cada tarjeta */
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 0 10px; /* Margen entre las tarjetas */
+  }
+
+  .card1 {
+    width: 5000px; /* Define el ancho deseado para cada tarjeta */
+    padding: 20px;
+    border: 0px solid #ccc;
+    margin: 0 10px; /* Margen entre las tarjetas */
+    text-align: center;
+
+  }
+  
+  .container1 {
+    display: flex; /* Utiliza flexbox */
+    justify-content: space-between;
+    width: 80%; /* Ancho del contenedor */
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Espacio interno del contenedor */
+    border: 5px; /* Borde del contenedor */
+    box-sizing: border-box; /* Incluye el borde en el cálculo del ancho */
+  }
+  
+  .card-text {
+    font-family: initial;
+    font-size: 50px;
+    line-height: 1.9;
+    color: #0d0d0d;
+    text-align:left;
+    margin-right: 100px;
+}
+
+.titulos{
+  font-family: cursive;
+  font-size: 30 px;
+  text-align: center;
+  color: #77b179;
+}
+
+.btn-custom {
+  background-color: #77b179; /* Cambia el color del botón */
+  color: white; /* Cambia el color del texto del botón */
+  display: block; /* Asegura que el botón ocupe todo el ancho del contenedor */
+  margin: 0 auto; /* Centra el botón horizontalmente */
+}
+
+.containerv {
+  position: relative;
+  max-width: 100%; /* Ancho máximo del contenedor */
+  margin-left: 0%; /* Centrar el contenedor */
+  -ms-flex-align: center;
+  overflow: hidden; /* Ocultar cualquier parte de la imagen que sobresalga del contenedor */
+}
+
+/* Estilos para la imagen de fondo */
+.containerv img {
+  width: 100%;
+  display: block;
+}
+
+/* Estilos para el texto superpuesto */
+.text-overlay {
+  position: absolute;
+  bottom: 20px; /* Posición vertical desde abajo */
+  left: 0; /* Posición horizontal al inicio */
+  right: 0; /* Posición horizontal al final */
+  text-align: center; /* Alinear el texto al centro */
+  color: white; /* Color del texto */
+}
+.content {
+  background-color: #071a11;
+}
+
+/* Estilos para las migas de pan */
+.breadcrumb {
+  
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+
+.breadcrumb-item {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.breadcrumb-item:last-child {
+  font-weight: 700;
+  color: #333; /* Color del último elemento */
+}
+
+.breadcrumb-item:not(:last-child)::after {
+  content: '>';
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: #333; /* Color del separador */
+}
+
+.breadcrumb-item a {
+  color: #d8ffdc; /* Color de los enlaces */
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+.carousel-item img {
+
+  width: 700px; /* Ancho específico para las imágenes */
+  height: 500px; /* Altura específica para las imágenes */
+  object-fit: cover; 
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px; 
+}
+
+.carousel-container {
+  margin: 0 auto; /* Centra horizontalmente el contenedor */
+  max-width: 1200px; /* Establece el ancho máximo del contenedor */
+  padding: 0 20px; /* Espacio a los lados del contenedor */
+}
+
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 576px) {
+  .carde {
+    margin-left: 0; /* Ajusta el margen izquierdo */
+    margin-right: 0; /* Ajusta el margen derecho */
+  }
+
+  .carousel-item img {
+    width: 100%; /* Ancho completo para las imágenes del carrusel */
+    height: auto; /* Altura automática para mantener la proporción */
+  }
+
+  .btn-custom {
+    margin-top: 20px; /* Ajusta el margen superior del botón */
+  }
+
+ 
+
+  .container1 {
+    width: 100%; /* Ancho completo para el contenedor */
+    padding: 10px; /* Espaciado interno reducido */
+  }
+
+  .card {
+    width: 100%; /* Ancho completo para las tarjetas */
+    height: auto; /* Altura automática para adaptarse al contenido */
+    margin-bottom: 20px; /* Ajusta el margen inferior */
+  }
+}
+
+/* Estilos para tablets y dispositivos más grandes */
+
+
+
+
+.menu-card {
+  border: 1px solid #e9ecef;
+  background-color: rgba(119, 177, 121, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.menu-header h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid green;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 400px;
+  height: 900px; /* Ajustando la altura de las tarjetas */
+}
+
+.card1{
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 400px;
+  height: 275px; /* Ajustando la altura de las tarjetas */
+}
+
+.card-text1 {
+  font-size: 1rem;
+  color: #fff;
+  font-family: monospace;
+}
+
+
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.card-text {
+  font-size: 20px;
+  color: #000000;
+  margin-top: 10px;
+  font-family: monospace;
+  flex: auto;
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 1200px) {
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 0.8rem;
+  }
+
+  .card-text {
+    font-size: 12px;
+  }
+}
+
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.button-group button {
+  flex: 1;
+  border-radius: 20px;
+  margin: 0 5px; /* Agregando espacio entre los botones */
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-success {
+  background-color: purple;
+  color: white;
+}
+
+.btn-secondary:hover, .btn-danger:hover, .btn-success:hover {
+  opacity: 0.9;
+}
+
+.btn-custom{
+  background-color: rgb(125, 70, 255);
+}
+.titulo{
+  color: aliceblue;
+  font-size: 250%;
+  font-family: monospace;
+
+}
+
+.carrusel-text{
+  color: purple;
+  font-size: 26px;
+  font-family: monospace;
+  background-color: white;
+}
+
+.button-group {
+  height: 50px; /* Establecer una altura fija para los contenedores de botones */
+  display: flex; /* Utilizar flexbox para alinear verticalmente los elementos */
+  align-items: center; /* Alinear verticalmente los botones */
+  justify-content: center; /* Centrar horizontalmente los botones */
+}
+
+
+.contenedor3 {
+  max-height: 300px; /* Tamaño máximo del div */
+  overflow-y: auto; /* Permitir desplazamiento vertical si el contenido excede el tamaño */
+  padding: 10px; /* Espaciado interior */
+}
+
+
+.btn-bajar {
+  display: none; /* Ocultar el botón por defecto */
+}
+
+/* Mostrar el botón solo si el contenido excede el tamaño máximo */
+.contenedor:hover .btn-bajar {
+  display: block;
+}
+
+.card {
+  border: none;
+}
+
+.img-fluid {
+  object-fit: cover;
+  height: 100%;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-title {
+  margin-top: 20px;
+  font-size: 200%;
+  font-family: monospace;
+}
+
+.btn-custom {
+  margin-top: 10px;
+  margin-right: 10px;
+  background-color: rgb(125, 70, 255);
+  color: white;
+}
+
+.btn-custom:hover {
+  background-color: #0056b3;
+}
+
+.carde{
+background-color: transparent;
+
+}
+.card-titlee{
+  color: #ffffff;
+  margin-top: 20px;
+  font-size: 200%;
+  font-family: monospace;
+}
+.card-textt{
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 10px;
+  font-family: monospace;
+  flex: auto;
+}
+

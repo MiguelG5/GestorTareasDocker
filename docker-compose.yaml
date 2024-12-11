@@ -1,0 +1,47 @@
+services:
+  postgres17:
+    container_name: postgres17
+    image: postgres:17-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: linux123
+      POSTGRES_DB: db_gestor_tareas
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: always
+    networks:
+      - GT
+  frontend:
+    container_name: gestor-tareas-frontend
+    build:
+      context: ./GestorTareasFront
+      dockerfile: dockerfile
+    ports:
+      - "4000:80"
+    networks:
+      - GT
+    depends_on:
+      - backend
+    restart: always
+  backend:
+    container_name: gestor-tareas-backend
+    build:
+      context: ./GestorTareasBack
+      dockerfile: dockerfile
+    ports:
+      - "3100:3100"
+    networks:
+      - GT
+    depends_on:
+      - postgres17
+    restart: always
+
+volumes:
+  data-postgres:
+    name: data-postgres
+
+networks:
+  GT:
+    driver: bridge

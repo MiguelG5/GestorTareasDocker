@@ -1,0 +1,76 @@
+<div style="text-align: center;">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" *ngFor="let crumb of breadcrumbs">
+        <a [routerLink]="crumb.url">{{ crumb.label }}</a>
+      </li>
+    </ol>
+  </nav>
+</div>
+
+<div *ngIf="colaboradores.length > 0" class="container mt-4">
+  <h2>Colaboradores</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Correo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let colaborador of colaboradores">
+        <td>{{ colaborador.email }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm" (click)="selectColaborador(colaborador)">Editar</button>
+          <button class="btn btn-secondary btn-sm" (click)="showRegisterForm(colaborador)">Agregar Colaborador</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="selectedColaborador" class="container mt-4">
+  <div class="card p-3">
+    <h3>Editar Colaborador</h3>
+    <form (ngSubmit)="updateColaborador()">
+      <div class="form-group">
+        <label for="email">Correo:</label>
+        <input id="email" class="form-control" [(ngModel)]="newEmail" name="email" required>
+      </div>
+      <button class="btn btn-success" type="submit">Actualizar</button>
+      <button class="btn btn-danger" type="button" (click)="selectedColaborador = null">Cancelar</button>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="colaboradores.length === 0" class="container mt-4">
+  <div class="alert alert-warning" role="alert">
+    No hay colaboradores disponibles, Paga un paqute para disfrutar al maximo tu experiencia en el sitio
+  </div>
+</div>
+
+<div *ngIf="isRegisterFormVisible" class="container mt-4">
+  <div class="card p-3">
+    <h3>Registrar Colaborador</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="registerColaborador()">
+      <div class="form-group">
+        <label for="username">Nombre de Usuario:</label>
+        <input id="username" class="form-control" formControlName="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input id="password" class="form-control" type="password" formControlName="password" required>
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-danger">
+          <div *ngFor="let error of passwordErrors">{{ error }}</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo:</label>
+        <input id="email" class="form-control" [value]="selectedEmail" readonly>
+      </div>
+      <input type="hidden" formControlName="id_colaborador"> <!-- Campo oculto para id_colaborador -->
+      <button class="btn btn-primary" type="submit">Guardar</button>
+      <button class="btn btn-secondary" type="button" (click)="isRegisterFormVisible = false">Cancelar</button>
+    </form>
+  </div>
+</div>

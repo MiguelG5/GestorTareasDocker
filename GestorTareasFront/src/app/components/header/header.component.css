@@ -1,0 +1,51 @@
+/* Estilos personalizados para el navbar */
+.navbar-custom {
+  background-color: rgba(172, 149, 255, 0.5); /* Color de fondo con transparencia */
+  padding: 10px 20px; /* Espaciado interno */
+  position: sticky; /* Hace que la barra de navegación sea pegajosa */
+  top: 0; /* Posición inicial pegajosa */
+  width: 100%; /* Ancho completo */
+  z-index: 999; /* Z-index para estar por encima de otros elementos */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+  color: #fff; /* Color del texto */
+}
+
+.navbar-custom .navbar-toggler-icon {
+  background-color: #fff; /* Color del ícono del botón de alternancia */
+}
+
+.navbar-custom .navbar-brand img {
+  margin-right: 5px; /* Espaciado entre la imagen y el texto del logo */
+  height: 30px; /* Tamaño de la imagen del logo */
+  vertical-align: middle;
+}
+
+.navbar-custom .nav-link:hover {
+  color: #fff; /* Color del texto en hover */
+}
+
+.navbar-custom .nav-link.disabled {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Color del texto para elementos deshabilitados */
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.search-container {
+  margin-right: 10px; /* Espacio entre el componente de búsqueda y el elemento anterior */
+}
+
+@media screen and (max-width: 768px) {
+  .dropdown {
+    position: stati c; /* Cambia la posición a estática para que se ajuste automáticamente */
+  }
+}

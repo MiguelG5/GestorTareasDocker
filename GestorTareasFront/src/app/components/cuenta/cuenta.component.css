@@ -1,0 +1,32 @@
+.breadcrumb {
+  
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .breadcrumb-item {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
+  
+  .breadcrumb-item:last-child {
+    font-weight: 700;
+    color: #d8ffdc; /* Color del último elemento */
+  }
+  
+  .breadcrumb-item:not(:last-child)::after {
+    content: '>';
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    color: #d8ffdc; /* Color del separador */
+  }
+  
+  .breadcrumb-item a {
+    color: #d8ffdc; /* Color de los enlaces */
+    text-decoration: none;
+  }
+  
+  .breadcrumb-item a:hover {
+    text-decoration: underline;
+  }

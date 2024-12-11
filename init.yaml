@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: init-sql-config
+data:
+  init.sql: |
+    -- Tabla 'user'
+    CREATE TABLE users (
+    id integer NOT NULL,
+    username character varying(255) NOT NULL,
+    email character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    role character varying(20),
+    razon_social character varying(255),
+    id_colaborador integer,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT users_email_key UNIQUE (email),
+    CONSTRAINT fk_id_colaborador FOREIGN KEY (id_colaborador)
+        REFERENCES public.colaboradores (id) MATCH SIMPLE
+);
+
+    -- Tabla 'colaboradores'
+    CREATE TABLE colaboradores (
+    id integer NOT NULL,
+    email character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
+    usuario_id integer NOT NULL,
+    pago_id integer NOT NULL,
+    CONSTRAINT colaboradores_pkey PRIMARY KEY (id),
+    CONSTRAINT colaboradores_pago_id_fkey FOREIGN KEY (pago_id)
+        REFERENCES public.pagos (id) MATCH SIMPLE,
+    CONSTRAINT colaboradores_usuario_id_fkey FOREIGN KEY (usuario_id)
+        REFERENCES public.users (id) MATCH SIMPLE
+
+);
+
+    -- Tabla 'actividades'
+    CREATE TABLE actividades (
+    id integer NOT NULL,
+    proyecto_id integer NOT NULL,
+    nombre_actividad character varying(255) NOT NULL,
+    descripcion text,
+    fecha_creacion timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    fecha_finalizacion timestamp without time zone,
+    CONSTRAINT actividades_pkey PRIMARY KEY (id),
+    CONSTRAINT actividades_proyecto_id_fkey FOREIGN KEY (proyecto_id)
+        REFERENCES public.proyecto (id) MATCH SIMPLE
+);
+
+    -- Tabla 'actividad_colaborador'
+    CREATE TABLE actividad_colaborador (
+    id integer NOT NULL,
+    actividad_id integer NOT NULL,
+    colaborador_id integer NOT NULL,
+    fecha_asignacion timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT actividad_colaborador_pkey PRIMARY KEY (id),
+    CONSTRAINT actividad_colaborador_actividad_id_fkey FOREIGN KEY (actividad_id)
+        REFERENCES public.actividades (id) MATCH SIMPLE,
+    CONSTRAINT actividad_colaborador_colaborador_id_fkey FOREIGN KEY (colaborador_id)
+        REFERENCES public.colaboradores (id) MATCH SIMPLE
+);
+
+    -- Tabla 'pagos'
+    CREATE TABLE pagos (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    fecha_inicio date NOT NULL,
+    fecha_finalizacion date NOT NULL,
+    paquete_id integer NOT NULL,
+    CONSTRAINT pagos_pkey PRIMARY KEY (id),
+    CONSTRAINT pagos_paquete_id_fkey FOREIGN KEY (paquete_id)
+        REFERENCES public.paquetes (id) MATCH SIMPLE
+    CONSTRAINT pagos_user_id_fkey FOREIGN KEY (user_id)
+        REFERENCES public.users (id) MATCH SIMPLE
+);
+
+    -- Tabla 'paquetes'
+    CREATE TABLE paquetes (
+    id integer NOT NULL,
+    nombre_paquete character varying(255) NOT NULL,
+    descripcion text,
+    costo numeric(10,2) NOT NULL,
+    duracion integer NOT NULL,
+    numero_colaboradores numeric DEFAULT 0,
+    CONSTRAINT paquetes_pkey PRIMARY KEY (id),
+    CONSTRAINT paquetes_nombre_paquete_key UNIQUE (nombre_paquete)
+);
+
+    -- Tabla 'proyecto'
+    CREATE TABLE proyecto (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    nombre_del_proyecto character varying(255) NOT NULL,
+    descripcion text,
+    fecha_creacion timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    fecha_finalizacion timestamp without time zone,
+    CONSTRAINT proyecto_pkey PRIMARY KEY (id),
+    CONSTRAINT proyecto_user_id_fkey FOREIGN KEY (user_id)
+        REFERENCES public.users (id) MATCH SIMPLE
+);
+
+
